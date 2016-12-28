@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <title>RootScope</title>
+<script src="./bower_components/angular/angular.js"></script>
+</script>
+<script type="text/javascript">
+var app = angular.module('app', []);
+app.service("sumService", function()
+{
+  this.add = function(num1, num2)
+  {
+  return num1 + num2;
+  }
+}
+);
+app.controller('SimpleController', function($scope, sumService){
+  $scope.test = "Hello";
+  $scope.output = 1;
+  $scope.addClick=function()
+  {
+    $scope.output = sumService.add(parseInt($scope.number1), parseInt($scope.number2));
+  };
+});
+</script>
+</head>
+<body>
+<div>
+  <div ng-controller="SimpleController">
+  <input type="text" ng-model="number1"></input>
+  <input type="text" ng-model="number2"></input>
+  <button ng-click="addClick()">Add</button>
+    {{ output }}
+  </div>
+</div>
+</body>
+</html>

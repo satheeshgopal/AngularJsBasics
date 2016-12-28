@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+<script src="./bower_components/angular/angular.js"></script>
+</script>
+<script type="text/javascript">
+angular.module('app', []);
+angular.module('app').run(function($rootScope){
+  $rootScope.msg="Hello";
+});
+angular.module('app').directive('myDirective',['$rootScope', function($rootScope){
+return {
+  restrict:'EA',
+  replace:true,
+  template:'<h1>{{msg}}</h1>'
+}
+}]);
+</script>
+</head>
+<body>
+<div>
+<h1>Custom Directive</h1>
+1.Will not work <myDirective></myDirective>
+2.<my:Directive></my:Directive>
+3.<my-Directive>will be replaced </my-Directive>
+4.<div my-Directive>will be replaced</div>
+</div>
+
+
+</body>
+</html>

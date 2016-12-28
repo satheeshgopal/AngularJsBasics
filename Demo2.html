@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+<script src="./bower_components/angular/angular.js"></script>
+</script>
+<script type="text/javascript">
+
+function MyController($scope) {
+$scope.clock = new Date();
+var updateClock = function() {
+$scope.clock = new Date();
+};
+setInterval(function() {
+$scope.$apply(updateClock);
+}, 1000);
+updateClock();
+};
+angular.module('app', []).controller('MyController', MyController);
+</script>
+</head>
+<body>
+<div ng-controller="MyController">
+<h1>Hello {{ clock }}!</h1>
+</div>
+
+
+</body>
+</html>

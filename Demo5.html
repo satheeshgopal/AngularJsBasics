@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <title>RootScope</title>
+<script src="./bower_components/angular/angular.js"></script>
+</script>
+<script type="text/javascript">
+angular.module('app', [])
+.run(function($rootScope){
+  $rootScope.message = "Hello World in RootScope";
+})
+.controller('SimpleController', function($scope){
+  //dummy controller
+});
+</script>
+</head>
+<body>
+<div>
+  <div ng-controller="SimpleController">
+  <h4>Root Scope Binding</h4>
+  <h4 ng-cloak>{{message}}</h4>
+  </div>
+</div>
+</body>
+</html>
